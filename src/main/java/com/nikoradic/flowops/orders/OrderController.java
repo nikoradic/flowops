@@ -11,8 +11,12 @@ import java.util.List;
 public class OrderController {
 
     @GetMapping
-    public List<String> getOrders() {
-        return List.of("Order 1", "Order 2", "Order 3");
+    public List<Order> getOrders() {
+        return List.of(
+                new Order(1, "John", "Laptop", 2, "CREATED"),
+                new Order(2, "Anna", "Phone", 1, "VALIDATED"),
+                new Order(3, "Mike", "Monitor", 3, "PROCESSING")
+        );
     }
 
 }
