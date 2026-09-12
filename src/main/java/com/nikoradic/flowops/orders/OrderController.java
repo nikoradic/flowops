@@ -10,13 +10,15 @@ import java.util.List;
 @RequestMapping("/api/orders")
 public class OrderController {
 
+    private final OrderService orderService;
+
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
     @GetMapping
     public List<Order> getOrders() {
-        return List.of(
-                new Order(1, "John", "Laptop", 2, "CREATED"),
-                new Order(2, "Anna", "Phone", 1, "VALIDATED"),
-                new Order(3, "Mike", "Monitor", 3, "PROCESSING")
-        );
+        return orderService.getOrders();
     }
 
 }
