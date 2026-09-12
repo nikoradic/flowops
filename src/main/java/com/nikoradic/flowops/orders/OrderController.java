@@ -1,6 +1,8 @@
 package com.nikoradic.flowops.orders;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +21,11 @@ public class OrderController {
     @GetMapping
     public List<Order> getOrders() {
         return orderService.getOrders();
+    }
+
+    @PostMapping
+    public Order createOrder(@RequestBody Order order) {
+        return orderService.createOrder(order);
     }
 
 }
