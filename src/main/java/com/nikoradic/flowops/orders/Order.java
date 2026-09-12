@@ -1,14 +1,26 @@
 package com.nikoradic.flowops.orders;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "orders")
 public class Order {
 
-    private long id;
+    @Id
+    @GeneratedValue
+    private Long id;
     private String customer;
     private String product;
     private int quantity;
     private String status;
 
-    public Order(long id, String customer, String product, int quantity, String status) {
+    public Order() {
+    }
+
+    public Order(Long id, String customer, String product, int quantity, String status) {
         this.id = id;
         this.customer = customer;
         this.product = product;
@@ -16,7 +28,14 @@ public class Order {
         this.status = status;
     }
 
-    public long getId() {
+    public Order(String customer, String product, int quantity, String status) {
+        this.customer = customer;
+        this.product = product;
+        this.quantity = quantity;
+        this.status = status;
+    }
+
+    public Long getId() {
         return id;
     }
 
