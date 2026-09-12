@@ -7,12 +7,14 @@ import java.util.List;
 @Service
 public class OrderService {
 
+    private final OrderRepository orderRepository;
+
+    public OrderService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
+
     public List<Order> getOrders() {
-        return List.of(
-                new Order(1, "John", "Laptop", 2, "CREATED"),
-                new Order(2, "Anna", "Phone", 1, "VALIDATED"),
-                new Order(3, "Mike", "Monitor", 3, "PROCESSING")
-        );
+        return orderRepository.findAll();
     }
 
 }
