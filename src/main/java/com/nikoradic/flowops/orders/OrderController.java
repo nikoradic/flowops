@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -29,8 +30,8 @@ public class OrderController {
     }
 
     @PostMapping
-    public Order createOrder(@RequestBody Order order) {
-        return orderService.createOrder(order);
+    public Order createOrder(@Valid @RequestBody CreateOrderRequest request) {
+        return orderService.createOrder(request);
     }
 
     @GetMapping("/{id}")
