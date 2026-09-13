@@ -1,6 +1,8 @@
 package com.nikoradic.flowops.orders;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -19,6 +21,11 @@ public class OrderService {
 
     public Order createOrder(Order order) {
         return orderRepository.save(order);
+    }
+
+    public Order getOrderById(Long id) {
+        return orderRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found"));
     }
 
 }
