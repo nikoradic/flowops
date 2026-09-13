@@ -19,7 +19,8 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
-    public Order createOrder(Order order) {
+    public Order createOrder(CreateOrderRequest request) {
+        Order order = new Order(request.getCustomer(), request.getProduct(), request.getQuantity(), "CREATED");
         return orderRepository.save(order);
     }
 
