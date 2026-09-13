@@ -35,4 +35,10 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
+    public void deleteOrder(Long id) {
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found"));
+        orderRepository.delete(order);
+    }
+
 }
